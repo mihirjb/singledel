@@ -1,0 +1,43 @@
+<div class="panel panel-default">
+  <div class="panel-body">
+	<%= form_for("user", :url => user_registration_path) do |f| %>
+	<div class="form-body">
+
+
+ 
+
+	<%= fields_for :order do |builder| %>
+	<div class="form-group">
+	<div class="input-group input-group-lg">
+	<%= builder.select :gathiya , [['Fafda','Fafda'],['Vanela','Vanela']], :class=> "selectpicker"%>
+
+		<%= builder.select :qty , [['100gm','100gm'],['250gm','250gm'],['500gm','500gm'],['1kg','1kg']], :class=> "selectpicker"%></div>  
+	</div>  
+	<% end %>
+
+	<div class="form-group">
+	<div class="input-group input-group-lg">
+  <%= f.email_field :email, :autofocus => true, :class=> "form-control", :placeholder=>"Email" %>
+
+  <%= f.password_field :password, :class=> "form-control", :placeholder=>"Password" %>
+
+  <%= f.password_field :password_confirmation,  :class=> "form-control", :placeholder=>"Retype Password" %>
+
+	<%= f.text_field :phone, :class=> "form-control", :placeholder=>"Phone Number" %>
+
+	<%= f.text_area :address, :class=> "form-control", :placeholder=>"Your complete delivery address" %>
+	</div>
+	</div>
+
+
+</div>
+
+
+
+<div class="form-group">
+<%= f.submit "Palce Order & Sign up", :class=>"btn btn-danger btn-lg btn-block " %>
+	</div>
+</div>
+</div>
+<% end %>
+

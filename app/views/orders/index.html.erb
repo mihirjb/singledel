@@ -1,0 +1,8 @@
+<h1>All My orders</h1>
+<ul class="list-item-group">
+<%@orders.each do |o| %>
+<li class="list-item">
+	<%= o.gathiya + " | " + "o.qty" %>
+</li>
+	<%end %>
+</ul>

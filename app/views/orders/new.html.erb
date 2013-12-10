@@ -1,0 +1,84 @@
+<h1 class="main-heading">Pre-Order Gathiya, at a discounted price!</h1>
+	<%  if user_signed_in? %>
+	<div class="panel panel-default">
+	  <div class="panel-body">
+		
+		<%= form_for :orders, :class=>"form-horizontal my-form",:action => 'resgistrations/create' do |f| %>
+		<div class="form-body">
+			<h2>Welcome <%= current_user.email %> </h2>
+			
+			<div class="form-group">
+				<div class="selectpicker">
+				<%= f.select :type , [['Fafda','Fafda'],['Vanela','Vanela']], :class=> "selectpicker"%>
+			
+					<%= f.select :qty , [['100gm','100gm'],['250gm','250gm'],['500gm','500gm'],['1kg','1kg']], :class=> "selectpicker"%>
+	<%= f.hidden_field :user_id, :class=> "form-control", :value=>current_user.id %>
+</div>  
+</div>
+<div class="form-group">
+	<div class="input-group">
+<h4>Delivery Address</h4>
+<p><%= current_user.address %></p>
+</div>
+</div>
+
+<div>
+<%= f.submit "Place Order", :disable_with => 'Adding...',:type => "button", :class =>"btn btn-primary btn-lg btn-block" %>
+</div>
+</div>
+<% end %>
+
+
+</div>
+</div>
+
+<%   else %>
+
+<%= link_to "Sign In", new_user_session_path, :class =>"btn btn-primary btn-lg btn-block main-sign-in"  %>
+
+<div class="panel panel-default">
+  <div class="panel-body">
+
+
+	<%= form_for("user", :url => user_registration_path) do |f| %>
+	<div class="form-body">
+
+
+ 
+
+	<%= fields_for :order do |builder| %>
+	<div class="form-group">
+	<div class="input-group input-group-lg">
+	<%= builder.select :gathiya , [['Fafda','Fafda'],['Vanela','Vanela']], :class=> "selectpicker"%>
+
+		<%= builder.select :qty , [['100gm','100gm'],['250gm','250gm'],['500gm','500gm'],['1kg','1kg']], :class=> "selectpicker"%></div>  
+	</div>  
+	<% end %>
+
+	<div class="form-group">
+	<div class="input-group input-group-lg">
+  <%= f.email_field :email, :autofocus => true, :class=> "form-control", :placeholder=>"Email" %>
+
+  <%= f.password_field :password, :class=> "form-control", :placeholder=>"Password" %>
+
+  <%= f.password_field :password_confirmation,  :class=> "form-control", :placeholder=>"Retype Password" %>
+
+	<%= f.text_field :phone, :class=> "form-control", :placeholder=>"Phone Number" %>
+
+	<%= f.text_area :address, :class=> "form-control", :placeholder=>"Your complete delivery address" %>
+	</div>
+	</div>
+
+
+</div>
+
+
+
+<div class="form-group">
+<%= f.submit "Palce Order & Sign up", :class=>"btn btn-danger btn-lg btn-block " %>
+	</div>
+</div>
+</div>
+<% end %>
+
+<% end %>

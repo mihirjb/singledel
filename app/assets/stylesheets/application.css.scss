@@ -1,0 +1,45 @@
+
+@import 'bootstrap';
+
+h1.main-heading
+{
+
+font-family: 'Yanone Kaffeesatz', sans-serif;
+text-align:center;
+font-weight:200;
+font-size:72px;
+}
+
+a.main-sign-in
+{
+width:43%;
+margin:0 auto;
+}
+div.container .panel
+{
+width:43%;
+background-color:#f5f5f5;
+margin:50px auto;
+}
+div.container form .form-body
+{
+margin-top:100px;
+}
+
+div.container form .form-control
+{
+margin:0 auto;
+}
+div.container form select {
+	font-size:18px;
+	color:#666;
+  width: 460px;
+height:40px;
+  border: 1px solid #cccccc;
+  background-color: #ffffff;
+}
+h3.center-block
+{
+text-align:center;
+margin:20px 0px;
+}
