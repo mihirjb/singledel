@@ -4,13 +4,13 @@
 	<div class="panel panel-default">
 	  <div class="panel-body">
 		
-		<%= form_for :orders, :class=>"form-horizontal my-form",:action => 'resgistrations/create' do |f| %>
+		<%= form_for :order,:url => "/orders", :class=>"form-horizontal my-form" do |f| %>
 		<div class="form-body">
 			<h2>Welcome <%= current_user.email %> </h2>
 			
 			<div class="form-group">
 				<div class="input-group input-group-lg">
-				<%= f.select :type , [['Fafda','Fafda'],['Vanela','Vanela']], :class=> "selectpicker"%>
+				<%= f.select :gathiya , [['Fafda','Fafda'],['Vanela','Vanela']], :class=> "selectpicker"%>
 			
 					<%= f.select :qty , [['100gm','100gm'],['250gm','250gm'],['500gm','500gm'],['1kg','1kg']], :class=> "selectpicker"%>
 	<%= f.hidden_field :user_id, :class=> "form-control", :value=>current_user.id %>
@@ -24,7 +24,7 @@
 </div>
 
 <div>
-<%= f.submit "Place Order", :disable_with => 'Adding...',:type => "button", :class =>"btn btn-primary btn-lg btn-block" %>
+<%= f.submit "Place Order", :disable_with => 'Adding...', :class =>"btn btn-primary btn-lg btn-block" %> 
 </div>
 </div>
 <% end %>
@@ -35,8 +35,8 @@
 
 <%   else %>
 
-<%= link_to "Sign In", new_user_session_path, :class =>"btn btn-primary btn-lg btn-block main-sign-in"  %>
-
+<p class ="main-heading"><%= link_to "Sign In", new_user_session_path %> to place an order or use the form below</p>
+<br/>
 <div class="panel panel-default">
   <div class="panel-body">
 
@@ -50,7 +50,7 @@
 	<%= fields_for :order do |builder| %>
 	<div class="form-group">
 	<div class="input-group input-group-lg">
-	<%= builder.select :gathiya , [['Fafda','Fafda'],['Vanela','Vanela']], :class=> "selectpicker"%>
+	<%= builder.select :gathiya , [['Fafda','Fafda'],['Vanela','Vanela']],  :autofocus => true%>
 
 		<%= builder.select :qty , [['100gm','100gm'],['250gm','250gm'],['500gm','500gm'],['1kg','1kg']], :class=> "selectpicker"%></div>  
 	</div>  
@@ -58,7 +58,7 @@
 
 	<div class="form-group">
 	<div class="input-group input-group-lg">
-  <%= f.email_field :email, :autofocus => true, :class=> "form-control", :placeholder=>"Email" %>
+  <%= f.email_field :email, :class=> "form-control", :placeholder=>"Email" %>
 
   <%= f.password_field :password, :class=> "form-control", :placeholder=>"Password" %>
 
@@ -76,7 +76,7 @@
 
 
 <div class="form-group">
-<%= f.submit "Palce Order & Sign up", :class=>"btn btn-danger btn-lg btn-block " %>
+<%= f.submit "Place Order & Sign up", :class=>"btn btn-danger btn-lg btn-block " %>
 	</div>
 </div>
 </div>

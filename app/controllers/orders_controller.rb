@@ -8,6 +8,12 @@ class OrdersController < ApplicationController
   end
 
   def create
+    @order = Order.create(order_params)
+    if @order.save
+      redirect_to root_path, :notice => "Order placed successfully"
+    else
+      redirect_to root_path, :notice =>"Placing of your Order failed. please Try Again"
+    end 
   end
 
   def edit
@@ -18,4 +24,13 @@ class OrdersController < ApplicationController
 
   def destroy
   end
+  
+  def show
+    @order = Order.find(params[:id])
+    
+  end
+  
+   def order_params
+      params.require(:order).permit(:gathiya, :qty, :user_id)
+    end
 end
