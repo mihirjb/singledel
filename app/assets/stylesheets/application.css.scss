@@ -39,7 +39,7 @@ margin:0 auto;
 div.container form select {
 	font-size:18px;
 	color:#666;
-  width: 460px;
+  width: 300%;
 height:40px;
   border: 1px solid #cccccc;
   background-color: #ffffff;
@@ -48,4 +48,8 @@ h3.center-block
 {
 text-align:center;
 margin:20px 0px;
+}
+.container
+{
+width:100%;
 }
