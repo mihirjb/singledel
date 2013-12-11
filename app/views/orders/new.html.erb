@@ -1,4 +1,4 @@
-<section>
+<section class="hero">
 <h1 class="main-heading">Pre-Order Gathiya, at a discounted price!</h1>
 	<%  if user_signed_in? %>
 	<div class="panel panel-default">
@@ -6,10 +6,10 @@
 		
 		<%= form_for :order,:url => "/orders", :class=>"form-horizontal my-form" do |f| %>
 		<div class="form-body">
-			<h2>Welcome <%= current_user.email %> </h2>
+			<p class="main-heading">Welcome <%= current_user.email %> </p>
 			
-			<div class="form-group">
-				<div class="input-group input-group-lg">
+			<div class="control-group">
+				<div class="controls" >
 				<%= f.select :gathiya , [['Fafda','Fafda'],['Vanela','Vanela']], :class=> "selectpicker"%>
 			
 					<%= f.select :qty , [['100gm','100gm'],['250gm','250gm'],['500gm','500gm'],['1kg','1kg']], :class=> "selectpicker"%>
@@ -35,7 +35,7 @@
 
 <%   else %>
 
-<p class ="main-heading"><%= link_to "Sign In", new_user_session_path %> to place an order or use the form below</p>
+<p class ="main-heading"><%= link_to "Sign In", new_user_session_path, :class=>"btn btn-danger btn-xs" %> to place an order or use the form below</p>
 <br/>
 <div class="panel panel-default">
   <div class="panel-body">
@@ -48,8 +48,8 @@
  
 
 	<%= fields_for :order do |builder| %>
-	<div class="form-group">
-	<div class="input-group input-group-lg">
+	<div class="control-group">
+		<div class="controls" >
 	<%= builder.select :gathiya , [['Fafda','Fafda'],['Vanela','Vanela']],  :autofocus => true%>
 
 		<%= builder.select :qty , [['100gm','100gm'],['250gm','250gm'],['500gm','500gm'],['1kg','1kg']], :class=> "selectpicker"%></div>  
